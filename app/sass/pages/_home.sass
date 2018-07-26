@@ -4,6 +4,54 @@
   height: 100vh
   display: flex
   align-items: center
+  &-subtitle
+    line-height: 1
+    margin-top: 0
+    margin-bottom: 20px
+    font-size: 30px
+    color: $white - 60%
+    display: flex
+    align-items: center
+    &__belarus
+      margin-left: 10px
+      margin-right: 5px
+      display: flex
+      align-items: center
+      &-name
+        text-decoration: underline
+      svg
+        width: 30px
+        height: 30px
+    strong
+      display: flex
+      align-items: center
+  &-pictures
+    display: flex
+    align-items: flex-end
+    @media only screen and (max-width : 480px)
+      transform: scale(.6)
+    &__banana
+      width: 60px
+      &-eyes
+        animation-duration: 8s
+        animation-name: banana-eyes
+        animation-iteration-count: infinite
+        animation-timing-function: ease-out
+    &__box
+      width: 100px
+      position: relative
+    &__monkey
+      width: 250px
+      display: block
+      &-tail
+        animation-duration: 3s
+        animation-name: monkey-tail
+        animation-iteration-count: infinite
+      &-eyes
+        animation-duration: 10s
+        animation-name: monkey-eyes
+        animation-iteration-count: infinite
+
   &-wrapper
     display: flex
     align-items: center
@@ -15,6 +63,8 @@
     margin: 0
     padding: 0
     font-family: 'roboto-bold'
+    line-height: 1
+    margin-bottom: 35px
     display: flex
     @media only screen and (max-width : 1200px)
       font-size: 100px

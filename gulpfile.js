@@ -25,7 +25,7 @@ var gulp           = require('gulp'),
 		});
 	});
 
-// Пользовательские скрипты проекта
+
 
 gulp.task('common-js', function() {
 	return gulp.src([
@@ -39,7 +39,7 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.min.js', // Всегда в конце
+		'app/js/common.min.js',
 		])
 	.pipe(concat('scripts.min.js'))
 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
@@ -52,7 +52,6 @@ gulp.task('sass', function() {
 	.pipe(sass({outputStyle: 'expanded'}).on("error", notify.onError()))
 	.pipe(rename({suffix: '.min', prefix : ''}))
 	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(cleanCSS()) // Опционально, закомментировать при отладке
 	.pipe(gulp.dest('app/css'))
 	.pipe(browserSync.stream())
 });
@@ -65,7 +64,6 @@ gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 
 gulp.task('imagemin', function() {
 	return gulp.src('app/img/**/*')
-	.pipe(cache(imagemin())) // Cache Images
 	.pipe(gulp.dest('dist/img')); 
 });
 
@@ -115,7 +113,6 @@ gulp.task('rsync', function() {
 		root: 'dist/',
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',
-		// include: ['*.htaccess'], // Скрытые файлы, которые необходимо включить в деплой
 		recursive: true,
 		archive: true,
 		silent: false,
